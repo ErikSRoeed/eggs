@@ -35,6 +35,8 @@ echo "Using conversion in list:" ${ID_CONVERSION_LIST}
 echo "To folder:" ${OUTPUT_DIR}
 echo "With name:" ${OUTPUT_NAME}.vcf.gz
 
+cd ${OUTPUT_DIR}
+
 bcftools reheader --samples ${ID_CONVERSION_LIST} --output ${OUTPUT_NAME}.vcf.gz ${VCF_INPUT_FILE}
 
 # Work end
