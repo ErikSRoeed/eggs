@@ -29,6 +29,10 @@ module load BCFtools/1.18-GCC-12.3.0
 module list
 
 # Work start
+echo "Concatenating VCFs listed in:" ${VCF_FULL_PATH_LIST} "..."
+echo "To folder:" ${OUTPUT_DIR}
+echo "With name:" ${OUTPUT_NAME}.vcf.gz
+
 cd ${OUTPUT_DIR}
 echo "Working in:" $PWD
 

@@ -17,7 +17,8 @@
 # User definitions
 VCF_INPUT_FILE=
 ID_CONVERSION_LIST=
-VCF_OUTPUT_FILE=
+OUTPUT_DIR=
+OUTPUT_NAME=
 
 # Prepare environment
 set -o errexit
@@ -29,6 +30,11 @@ module load BCFtools/1.18-GCC-12.3.0
 module list
 
 # Work start
-bcftools reheader --samples ${ID_CONVERSION_LIST} --output ${VCF_OUTPUT_FILE} ${VCF_INPUT_FILE}
+echo "Renaming samples in:" ${VCF_INPUT_FILE} "..."
+echo "Using conversion in list:" ${ID_CONVERSION_LIST}
+echo "To folder:" ${OUTPUT_DIR}
+echo "With name:" ${OUTPUT_NAME}.vcf.gz
+
+bcftools reheader --samples ${ID_CONVERSION_LIST} --output ${OUTPUT_NAME}.vcf.gz ${VCF_INPUT_FILE}
 
 # Work end
