@@ -36,7 +36,7 @@ echo "With name:" ${OUTPUT_NAME}.vcf.gz
 cd ${OUTPUT_DIR}
 echo "Working in:" $PWD
 
-bcftools merge --file-list ${VCF_INPUT_LIST} --threads 8 --output-type z --output ${OUTPUT_NAME}.vcf.gz
+bcftools merge --file-list ${VCF_FULL_PATH_LIST} --threads 8 --output-type z --output ${OUTPUT_NAME}.vcf.gz
 bcftools index ${OUTPUT_NAME}.vcf.gz
 
 # Work end
