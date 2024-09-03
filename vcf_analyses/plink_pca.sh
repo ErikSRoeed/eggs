@@ -38,16 +38,19 @@ echo "Input files set sex chromosome:" $INPUT_BFILES_SEX_CHROMOSOME
 cd $PLINK_DIR
 echo "Working in:" $PWD
 
-plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_geno.pca --pca \
+plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_geno.pca --pca --make-bed \
 --extract ${INPUT_BFILES_NAME}_geno.prune.in \
 --allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
-plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_auto.pca --pca \
+plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_auto.pca --pca --make-bed \
 --extract ${INPUT_BFILES_NAME}_auto.prune.in \
 --allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
-plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_${INPUT_BFILES_SEX_CHROMOSOME}.pca --pca \
+plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_${INPUT_BFILES_SEX_CHROMOSOME}.pca --pca --make-bed \
 --extract ${INPUT_BFILES_NAME}_${SEX_CHROMOSOME}.prune.in \
 --allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
+
+# If OPTIONAL_OUTPUT_SUFFIX is "", input files have '~' appended. Only keep updated files.
+rm -v ${INPUT_BFILES_NAME}.*~
 
 # Work end

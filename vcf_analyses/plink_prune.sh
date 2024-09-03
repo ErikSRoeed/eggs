@@ -47,4 +47,7 @@ grep ${INPUT_BFILES_SEX_CHROMOSOME} ${INPUT_BFILES_NAME}.prune.in > ${INPUT_BFIL
 mv ${INPUT_BFILES_NAME}.prune.in ${INPUT_BFILES_NAME}_geno.prune.in
 mv ${INPUT_BFILES_NAME}.prune.out ${INPUT_BFILES_NAME}_geno.prune.out
 
+# If OPTIONAL_OUTPUT_SUFFIX is "", input files have '~' appended. Only keep updated files.
+rm -v ${INPUT_BFILES_NAME}.*~
+
 # Work end
