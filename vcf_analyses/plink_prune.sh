@@ -40,11 +40,11 @@ echo "Working in:" $PWD
 
 plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME} --make-bed \
 --indep-pairwise 50 10 0.1 \
---allow-extra-chr --chr-set $N_CHROMOSOMES
+--allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
-grep -v ${INPUT_BFILES_SEX_CHROMOSOME} ${INPUT_BFILESET_NAME}.prune.in > ${INPUT_BFILESET_NAME}_auto.prune.in
-grep ${INPUT_BFILES_SEX_CHROMOSOME} ${INPUT_BFILESET_NAME}.prune.in > ${INPUT_BFILESET_NAME}_${INPUT_BFILES_SEX_CHROMOSOME}.prune.in
-mv ${INPUT_BFILESET_NAME}.prune.in ${INPUT_BFILESET_NAME}_geno.prune.in
-mv ${INPUT_BFILESET_NAME}.prune.out ${INPUT_BFILESET_NAME}_geno.prune.out
+grep -v ${INPUT_BFILES_SEX_CHROMOSOME} ${INPUT_BFILES_NAME}.prune.in > ${INPUT_BFILES_NAME}_auto.prune.in
+grep ${INPUT_BFILES_SEX_CHROMOSOME} ${INPUT_BFILES_NAME}.prune.in > ${INPUT_BFILES_NAME}_${INPUT_BFILES_SEX_CHROMOSOME}.prune.in
+mv ${INPUT_BFILES_NAME}.prune.in ${INPUT_BFILES_NAME}_geno.prune.in
+mv ${INPUT_BFILES_NAME}.prune.out ${INPUT_BFILES_NAME}_geno.prune.out
 
 # Work end
