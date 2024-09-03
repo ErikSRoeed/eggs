@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ADMIN
-#SBATCH --job-name=plink_initialize
+#SBATCH --job-name=plink_filter
 #SBATCH --output=SLURM-%j-%x.out
 #SBATCH --error=SLURM-%j-%x.err
 #SBATCH --account=nn10082k
