@@ -41,7 +41,8 @@ cat $EXCLUDE_SAMPLES_LIST
 cd ${PLINK_DIR}
 echo "Working in:" $PWD
 
-plink --bfile ${INPUT_BFILES_NAME} --out ${OUTPUT_BFILES_NAME} --remove ${EXCLUDE_SAMPLES_LIST} \
+plink --bfile ${INPUT_BFILES_NAME} --out ${OUTPUT_BFILES_NAME} --make-bed \
+--remove ${EXCLUDE_SAMPLES_LIST} \
 --allow-extra-chr --chr-set $N_CHROMOSOMES
 
 # Work end

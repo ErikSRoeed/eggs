@@ -44,7 +44,7 @@ echo "Working in:" $PWD
 OUTPUT_BFILES_BASENAME=${INPUT_BFILES_NAME}${OPTIONAL_OUTPUT_SUFFIX}
 echo "Output binary file set name:" ${OUTPUT_BFILES_BASENAME}
 
-plink --bfile ${INPUT_BFILES_NAME} --out ${OUTPUT_BFILES_BASENAME} \
+plink --bfile ${INPUT_BFILES_NAME} --out ${OUTPUT_BFILES_BASENAME} --make-bed \
 --geno ${FILTER_VARIANTS_WHERE_MISSING_CALL_RATE_EXCEEDS} \
 --maf ${FILTER_VARIANTS_WHERE_MAF_IS_BELOW} \
 --double-id --set-missing-var-ids @:# \

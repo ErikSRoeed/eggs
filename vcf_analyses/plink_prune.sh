@@ -38,7 +38,8 @@ echo "Input files set sex chromosome:" $INPUT_BFILES_SEX_CHROMOSOME
 cd $PLINK_DIR
 echo "Working in:" $PWD
 
-plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME} --indep-pairwise 50 10 0.1 \
+plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME} --make-bed \
+--indep-pairwise 50 10 0.1 \
 --allow-extra-chr --chr-set $N_CHROMOSOMES
 
 grep -v ${INPUT_BFILES_SEX_CHROMOSOME} ${INPUT_BFILESET_NAME}.prune.in > ${INPUT_BFILESET_NAME}_auto.prune.in
