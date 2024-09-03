@@ -38,5 +38,6 @@ echo "With name:" ${OUTPUT_NAME}.vcf.gz
 cd ${OUTPUT_DIR}
 
 bcftools reheader --samples ${ID_CONVERSION_LIST} --output ${OUTPUT_NAME}.vcf.gz ${VCF_INPUT_FILE}
+bcftools index ${OUTPUT_NAME}.vcf.gz
 
 # Work end
