@@ -47,7 +47,7 @@ plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_auto.pca --pca --m
 --allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
 plink --bfile ${INPUT_BFILES_NAME} --out ${INPUT_BFILES_NAME}_${INPUT_BFILES_SEX_CHROMOSOME}.pca --pca --make-bed \
---extract ${INPUT_BFILES_NAME}_${SEX_CHROMOSOME}.prune.in \
+--extract ${INPUT_BFILES_NAME}_${INPUT_BFILES_SEX_CHROMOSOME}.prune.in \
 --allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
 # If OPTIONAL_OUTPUT_SUFFIX is "", input files have '~' appended. Only keep updated files.
