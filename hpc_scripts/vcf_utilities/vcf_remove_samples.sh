@@ -30,7 +30,7 @@ module load BCFtools/1.18-GCC-12.3.0
 module list
 
 # Work start
-echo "Input VCF:" ${VCF_FULL_PATH_LIST} "..."
+echo "Input VCF:" ${VCF_INPUT_FILE} "..."
 echo "Output to folder:" ${OUTPUT_DIR}
 echo "With filename:" ${OUTPUT_NAME}.vcf.gz
 echo "Removing following samples (if present):"
@@ -38,7 +38,7 @@ cat $EXCLUDE_SAMPLES_LIST
 
 cd ${OUTPUT_DIR}
 
-bcftools view -S ${EXCLUDE_SAMPLES_LIST} ${VCF_INPUT_FILE} > ${OUTPUT_NAME}.vcf.gz
+bcftools view --force-samples --output-type z --sample-list ^$EXCLUDE_SAMPLES_LIST $VCF_INPUT_FILE > ${OUTPUT_NAME}.vcf.gz
 bcftools index ${OUTPUT_NAME}.vcf.gz
 
 # Work end
