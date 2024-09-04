@@ -56,7 +56,4 @@ rm -v ${INPUT_BFILES_NAME}_*.bim
 rm -v ${INPUT_BFILES_NAME}_*.fam
 rm -v ${INPUT_BFILES_NAME}_*.nosex
 
-# If OPTIONAL_OUTPUT_SUFFIX is "", input files have '~' appended. Only keep updated files.
-rm -v ${INPUT_BFILES_NAME}.*~
-
 # Work end
