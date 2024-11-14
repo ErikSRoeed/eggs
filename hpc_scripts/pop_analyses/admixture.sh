@@ -19,6 +19,7 @@ PLINK_PARENT_DIR=
 INPUT_BFILES_NAME=
 K_MIN=
 K_MAX=
+CPUS_PER_TASK= # Remember to always set this equal to the number passed to SBATCH
 
 # Prepare environment
 set -o errexit
@@ -52,7 +53,7 @@ cd admixture
 echo "Running admixture ..."
 for K in $(seq ${K_MIN} ${K_MAX})
 do
-    admixture --cv .admixture_tmp/${INPUT_BFILES_NAME}.admixture.bed $K > ${INPUT_BFILES_NAME}_K${K}.out
+    admixture --cv -j$CPUS_PER_TASK .admixture_tmp/${INPUT_BFILES_NAME}.admixture.bed $K > ${INPUT_BFILES_NAME}_K${K}.out
 done
 
 echo "Collating CV errors ..."
