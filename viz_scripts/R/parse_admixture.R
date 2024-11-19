@@ -1,5 +1,5 @@
 
-parse_admixture <- function(admixture_output_dir, sample_ids, sample_groups) {
+parse_admixture <- function(admixture_output_dir, sample_ids) {
 
   library(magrittr)
 
@@ -28,8 +28,7 @@ parse_admixture <- function(admixture_output_dir, sample_ids, sample_groups) {
     k <- cv_error_line %>% stringr::str_sub(k_starts, k_ends) %>% as.numeric()
 
     # Sample groups and sample ids assumed in same order
-    assignments <- cbind(sample_groups, sample_ids) %>%
-      cbind(read.table(assignments_file))
+    assignments <- cbind(sample_ids, read.table(assignments_file))
 
     admixture_results %<>% append(
       list(
