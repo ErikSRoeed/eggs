@@ -17,6 +17,7 @@
 # User definitions
 PLINK_DIR=
 INPUT_BFILES_NAME=
+INPUT_BFILES_N_CHROMOSOMES=30
 
 # Prepare environment
 set -o errexit
@@ -35,6 +36,7 @@ echo "Name of PLINK b-file set:" $INPUT_BFILES_NAME
 cd ${PLINK_DIR}
 echo "Working in:" $PWD
 
-plink --bfile ${INPUT_BFILES_NAME} --recode vcf-iid bgz --out ${INPUT_BFILES_NAME}
+plink --bfile ${INPUT_BFILES_NAME} --recode vcf-iid bgz --out ${INPUT_BFILES_NAME} \
+--allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
 # Work end
