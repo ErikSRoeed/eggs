@@ -38,7 +38,7 @@ cat $EXCLUDE_SAMPLES_LIST
 
 cd ${OUTPUT_DIR}
 
-bcftools view --force-samples --output-type z --sample-list ^$EXCLUDE_SAMPLES_LIST $VCF_INPUT_FILE > ${OUTPUT_NAME}.vcf.gz
+bcftools view --force-samples --output-type z --samples-file ^$EXCLUDE_SAMPLES_LIST $VCF_INPUT_FILE > ${OUTPUT_NAME}.vcf.gz
 bcftools index ${OUTPUT_NAME}.vcf.gz
 
 # Work end
