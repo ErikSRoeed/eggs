@@ -45,7 +45,4 @@ plink --bfile ${INPUT_BFILES_NAME} --out ${OUTPUT_BFILES_NAME} --make-bed \
 --remove ${EXCLUDE_SAMPLES_LIST} \
 --allow-extra-chr --chr-set $INPUT_BFILES_N_CHROMOSOMES
 
-# If OPTIONAL_OUTPUT_SUFFIX is "", input files have '~' appended. Only keep updated files.
-rm -v ${INPUT_BFILES_NAME}.*~
-
 # Work end
