@@ -38,7 +38,7 @@ if [ -e work/ ]
 then
 	nextflow run 1_trim_and_align.nf --samples ${SAMPLE_INFO_CSV} --resume
 else
-	nextflow run_1_trim_and_align.nf --samples ${SAMPLE_INFO_CSV}
+	nextflow run 1_trim_and_align.nf --samples ${SAMPLE_INFO_CSV}
 fi
 
 # Work end
