@@ -22,6 +22,7 @@ POPMAP_RDS_PATH=
 PARENTAL_POP_A=
 PARENTAL_POP_B=
 DIFFERENCE_THRESHOLD=1 # 1 = fixed differences
+R_LIBRARY_PATH=/cluster/home/username/library-path-here
 
 # Path to companion R script triangulaR.R
 R_SCRIPT= # ..../eggs/hpc_scripts/pop_analyses/triangulaR.R
@@ -47,6 +48,7 @@ echo "Difference threshold:" $DIFFERENCE_THRESHOLD
 echo ""
 
 Rscript $R_SCRIPT --args $INPUT_VCF_PATH $OUTPUT_DIR \
-$POPMAP_RDS_PATH $PARENTAL_POP_A $PARENTAL_POP_B $DIFFERENCE_THRESHOLD > ${OUTPUT_DIR}/triangulaR.Rout
+$POPMAP_RDS_PATH $PARENTAL_POP_A $PARENTAL_POP_B $DIFFERENCE_THRESHOLD \
+$R_LIBRARY_PATH > ${OUTPUT_DIR}/triangulaR.Rout
 
 # Work end
