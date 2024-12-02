@@ -1,16 +1,21 @@
-# Edit R library path as needed
-.libPaths(c("/cluster/home/user/your-user-r-library-name", .libPaths()))
-library(triangulaR)
-library(vcfR)
-
 # Read arguments from command line
 arguments <- commandArgs(trailingOnly = TRUE)
-input_vcf_path <- arguments[1] |> as.character()
-output_directory <- arguments[2] |> as.character()
-popmap_rds_path <- arguments[3] |> as.character()
-parental_pop_a <- arguments[4] |> as.character()
-parental_pop_b <- arguments[5] |> as.character()
-difference_threshold <- arguments[6] |> as.numeric()
+for (argument in arguments) {
+  cat(argument, "\n")
+}
+
+input_vcf_path <- arguments[2] |> as.character()
+output_directory <- arguments[3] |> as.character()
+popmap_rds_path <- arguments[4] |> as.character()
+parental_pop_a <- arguments[5] |> as.character()
+parental_pop_b <- arguments[6] |> as.character()
+difference_threshold <- arguments[7] |> as.numeric()
+r_library_path <- arguments[8] |> as.character()
+
+# Setup
+.libPaths(c(r_library_path, .libPaths()))
+library(triangulaR)
+library(vcfR)
 
 # Load VCF and population map
 input_vcfR <- vcfR::read.vcfR(input_vcf_path)
