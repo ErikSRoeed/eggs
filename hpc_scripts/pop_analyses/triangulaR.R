@@ -19,9 +19,11 @@ library(vcfR)
 
 # Load VCF and population map
 input_vcfR <- vcfR::read.vcfR(input_vcf_path)
+cat("Succesfully loaded VCF. \n")
 popmap <- readRDS(popmap_rds_path)
+cat("Succesfully loaded population map. \n")
 
-# Find AIMs and save
+# Find AIMs and purge input VCF from memory
 triangulaR_aims_vcfR <- triangulaR::alleleFreqDiff(
   vcfR = input_vcfR,
   pm = popmap,
@@ -29,9 +31,15 @@ triangulaR_aims_vcfR <- triangulaR::alleleFreqDiff(
   p2 = parental_pop_b,
   difference = difference_threshold
 )
+cat("AIMs identified. \n")
 
-vcf_outpath <- paste(output_directory, "triangulaR_AIMs.vcf.gz", sep = "_")
+rm(input_vcfR)
+gc()
+
+# Save AIMs VCF
+vcf_outpath <- paste(output_directory, "/triangulaR_AIMs.vcf.gz", sep = "_")
 vcfR::write.vcf(triangulaR_aims_vcfR, file = vcf_outpath)
+cat("AIMs saved to file. \n")
 
 # Calculate heterozygosity and hybrid index and save
 triangulaR_results <- triangulaR::hybridIndex(
@@ -40,6 +48,8 @@ triangulaR_results <- triangulaR::hybridIndex(
   p1 = parental_pop_a,
   p2 = parental_pop_b
 )
+cat("Statistics calculated. \n")
 
-results_outpath <- paste(output_directory, "triangulaR_results.RDS", sep = "_")
+results_outpath <- paste(output_directory, "/triangulaR_results.RDS", sep = "_")
 saveRDS(triangulaR_results, file = results_outpath)
+cat("Statistics saved to file. Script finished. \n")
