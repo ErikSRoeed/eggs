@@ -37,7 +37,7 @@ rm(input_vcfR)
 gc()
 
 # Save AIMs VCF
-vcf_outpath <- paste(output_directory, "/triangulaR_AIMs.vcf.gz", sep = "_")
+vcf_outpath <- paste(output_directory, "/triangulaR_AIMs.vcf.gz", sep = "")
 vcfR::write.vcf(triangulaR_aims_vcfR, file = vcf_outpath)
 cat("AIMs saved to file. \n")
 
@@ -50,6 +50,6 @@ triangulaR_results <- triangulaR::hybridIndex(
 )
 cat("Statistics calculated. \n")
 
-results_outpath <- paste(output_directory, "/triangulaR_results.RDS", sep = "_")
+results_outpath <- paste(output_directory, "/triangulaR_results.RDS", sep = "")
 saveRDS(triangulaR_results, file = results_outpath)
 cat("Statistics saved to file. Script finished. \n")
