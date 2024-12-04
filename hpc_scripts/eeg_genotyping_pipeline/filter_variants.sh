@@ -38,7 +38,7 @@ conda activate /cluster/projects/nn10082k/conda_group/nextflow
 module list
 
 # Work start
-cd ${PIPELINE_REPOSITORY}
+cd ${PIPELINE_REPOSITORY_DIR}
 echo "Working in:" $PWD
 
 nextflow run 3_filter_variants.nf --miss ${MISS} \
