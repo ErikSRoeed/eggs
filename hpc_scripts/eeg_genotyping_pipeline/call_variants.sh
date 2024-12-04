@@ -17,6 +17,7 @@
 # User definitions
 PIPELINE_REPOSITORY=
 BAM_PATHS_LIST=
+PLOIDY_FILE=
 
 GENOME_PDOM=/cluster/projects/nn10082k/ref/house_sparrow_genome_assembly-18-11-14_masked.fa
 GENOME_INDX=/cluster/projects/nn10082k/ref/house_sparrow_genome_assembly-18-11-14_masked.fa.fai
@@ -40,6 +41,6 @@ echo "Working in:" $PWD
 
 WINDOW_LIST=sparrow_genome_windows.list
 bash 0_create_genome_windows.sh ${GENOME_INDX} ${WINDOW_SIZE} ${WINDOW_LIST}
-nextflow run 2_call_variants.nf --bams ${BAM_PATHS_LIST} --windows ${WINDOW_LIST} --ref ${GENOME_PDOM}
+nextflow run 2_call_variants.nf --bams ${BAM_PATHS_LIST} --windows ${WINDOW_LIST} --ref ${GENOME_PDOM} --ploidyFile ${PLOIDY_FILE}
 
 # Work end
