@@ -68,3 +68,8 @@ test_that("Method get_variance_explained returns expected output", {
     c(50, 30, 20)
   )
 })
+
+test_that("Active field sample_ids returns expected output", {
+  inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+  expect_equal(inst$sample_ids, paste("Sample", 1 : 6, sep = ""))
+})

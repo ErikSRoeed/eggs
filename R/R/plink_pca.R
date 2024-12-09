@@ -49,6 +49,15 @@ plink_pca <- R6::R6Class(
 
   ),
 
+  active = list(
+
+    sample_ids = function() {
+      sample_ids <- private$eigenvectors[[1]]
+      return(sample_ids)
+    }
+
+  ),
+
   private = list(
 
     eigenvalues = NULL,
