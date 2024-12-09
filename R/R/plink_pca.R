@@ -54,6 +54,10 @@ plink_pca <- R6::R6Class(
 
   active = list(
 
+    #' Active field with sample IDs
+    #'
+    #' @returns A vector of all sample IDs from private eigenvector table
+    #'
     sample_ids = function() {
       sample_ids <- private$eigenvectors[[1]]
       return(sample_ids)
