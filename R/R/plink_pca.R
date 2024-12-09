@@ -23,27 +23,30 @@ plink_pca <- R6::R6Class(
         private$parse_eigenvectors(id_name)
     },
 
-    #' Calculate variance explained by each principal component
+    #' Calculate variance explained by any / all principal component(s)
     #'
-    #' @param eigenval Vector of eigenvalues loaded from PLINK
+    #' @param pc Vector of which principal components to return for
+    #' @param signif Number of significant figures
+    #' @param as_percent Logical. Return as percent (default) or fraction?
     #'
     #' @returns A vector of variances explained per principal component
     #'
-    get_variance_explained = function(as_percent = TRUE) {
+    get_variance_explained = function(pc, signif = 3, as_percent = TRUE) {
       variance_explained <- private$eigenvalues / sum(private$eigenvalues)
+      variance_explained <- signif(variance_explained, signif)
       if (as_percent) variance_explained <- variance_explained * 100
-      return(variance_explained)
+      return(variance_explained[pc])
     },
 
     #' Get coordinate matrix
     #'
-    #' @param principal_components Vector of which principal components to return
+    #' @param pc Vector of which principal components to return
     #'
     #' @returns A tibble of sample IDs and principal component coordinates
     #'
-    get_coordinates = function(principal_components = c(1, 2)) {
+    get_coordinates = function(pc = c(1, 2)) {
       ID_INDEX <- 1
-      return_columns <- c(ID_INDEX, principal_components + ID_INDEX)
+      return_columns <- c(ID_INDEX, pc + ID_INDEX)
       return(private$eigenvectors[return_columns])
     }
 

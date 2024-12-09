@@ -47,11 +47,11 @@ test_that("Method get_coordinates returns expected output", {
   priv <- inst$.__enclos_env__$private
 
   expect_equal(
-    inst$get_coordinates(principal_components = c(1)),
+    inst$get_coordinates(pc = c(1)),
     priv$eigenvectors[c("TestID", "PC1")]
   )
   expect_equal(
-    inst$get_coordinates(principal_components = c(1, 2)),
+    inst$get_coordinates(pc = c(1, 2)),
     priv$eigenvectors[c("TestID", "PC1", "PC2")]
   )
 })
@@ -60,13 +60,14 @@ test_that("Method get_variance_explained returns expected output", {
   inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
 
   expect_equal(
-    inst$get_variance_explained(as_percent = FALSE),
+    inst$get_variance_explained(pc = c(1, 2, 3), as_percent = FALSE),
     c(0.5, 0.3, 0.2)
   )
   expect_equal(
-    inst$get_variance_explained(as_percent = TRUE),
+    inst$get_variance_explained(pc = c(1, 2, 3), as_percent = TRUE),
     c(50, 30, 20)
   )
+  expect_vector(inst$get_variance_explained(pc = c(1)), ptype = numeric(), size = 1)
 })
 
 test_that("Active field sample_ids returns expected output", {
