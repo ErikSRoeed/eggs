@@ -52,7 +52,7 @@ load_plink_eigenval <- function(file_path) {
 rename_plink_eigenvec <- function(eigenvec, pc_prefix = "PC", id_name = "ID") {
   ID_INDEX <- 1
 
-  pc_count <- ncol(plink_eigenvectors[-ID_INDEX])
+  pc_count <- ncol(eigenvec[-ID_INDEX])
   pc_columns <- seq(from = ID_INDEX + 1, to = pc_count)
   pc_names <- paste(pc_prefix, seq(pc_count), sep = "")
 
