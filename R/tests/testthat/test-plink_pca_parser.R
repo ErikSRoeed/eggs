@@ -1,18 +1,18 @@
 
-test_that("Can instantiate new plink_pca object without error, warning, or message", {
+test_that("Can instantiate new plink_pca_parser object without error, warning, or message", {
   expect_no_error({
-    inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+    inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
   })
   expect_no_warning({
-    inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+    inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
   })
   expect_no_message({
-    inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+    inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
   })
 })
 
 test_that("Eigenvalues are loaded correctly", {
-  inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+  inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
   priv <- inst$.__enclos_env__$private
 
   # Expect same properties as in tests/test.eigenval
@@ -20,7 +20,7 @@ test_that("Eigenvalues are loaded correctly", {
 })
 
 test_that("Eigenvectors are loaded correctly", {
-  inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec", "TestID")
+  inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec", "TestID")
   priv <- inst$.__enclos_env__$private
 
   # Expect properties accord with input file and user input
@@ -43,7 +43,7 @@ test_that("Eigenvectors are loaded correctly", {
 })
 
 test_that("Method get_coordinates returns expected output", {
-  inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec", "TestID")
+  inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec", "TestID")
   priv <- inst$.__enclos_env__$private
 
   expect_equal(
@@ -57,7 +57,7 @@ test_that("Method get_coordinates returns expected output", {
 })
 
 test_that("Method get_variance_explained returns expected output", {
-  inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+  inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
 
   expect_equal(
     inst$get_variance_explained(pc = c(1, 2, 3), as_percent = FALSE),
@@ -71,6 +71,6 @@ test_that("Method get_variance_explained returns expected output", {
 })
 
 test_that("Active field sample_ids returns expected output", {
-  inst <- plink_pca$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
+  inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec")
   expect_equal(inst$sample_ids, paste("Sample", 1 : 6, sep = ""))
 })

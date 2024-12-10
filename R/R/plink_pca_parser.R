@@ -1,11 +1,11 @@
-#' Class for importing results of PLINK PCA
+#' Class for parsing results of PLINK PCA
 #'
 #' @field eigenvalues Private field holding eigenvalues
 #' @field eigenvectors Private field holding eigenvector (PC) matrix and sample IDs
 #'
-plink_pca <- R6::R6Class(
+plink_pca_parser <- R6::R6Class(
 
-  classname = "PLINK PCA Results",
+  classname = "PLINK PCA Parser",
 
   public = list(
 
