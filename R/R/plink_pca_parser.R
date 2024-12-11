@@ -17,7 +17,7 @@ plink_pca_parser <- R6::R6Class(
     #'
     #' @returns Void.
     #'
-    initialize = function(eigenval_path, eigenvec_path, id_name = "ID") {
+    initialize = function(eigenval_path, eigenvec_path, id_name) {
       private$eigenvalues <- private$load_eigenvalues(eigenval_path)
       private$eigenvectors <- private$load_eigenvectors(eigenvec_path) |>
         private$parse_eigenvectors(id_name)
@@ -117,3 +117,16 @@ plink_pca_parser <- R6::R6Class(
 
   )
 )
+
+#' Function to instantiate new plink_pca_parser
+#'
+#' @param eigenval_path Path to PLINK output with .eigenval extension
+#' @param eigenvec_path Path to PLINK output with .eigenvec extension
+#' @param id_name Name to use for sample ID column in output
+#'
+#' @returns An object of class plink_pca_parser
+#'
+parse_plink_pca <- function(eigenval_path, eigenvec_path, id_name = "ID") {
+  parser <- plink_pca_parser$new(eigenval_path, eigenvec_path, id_name)
+  return(parser)
+}
