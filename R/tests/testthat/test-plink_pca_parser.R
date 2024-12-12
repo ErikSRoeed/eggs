@@ -15,7 +15,7 @@ test_that("Eigenvalues are loaded correctly", {
   inst <- plink_pca_parser$new("../testdata/test.eigenval", "../testdata/test.eigenvec", "TestID")
   priv <- inst$.__enclos_env__$private
 
-  # Expect same properties as in tests/test.eigenval
+  # Expect same properties as in ../testdata/test.eigenval
   expect_vector(priv$eigenvalues, ptype = numeric(), size = 3)
 })
 
