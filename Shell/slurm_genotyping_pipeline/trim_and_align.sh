@@ -36,7 +36,7 @@ echo "Working in:" $PWD
 
 if [ -e work/ ]
 then
-	nextflow run 1_trim_and_align.nf --samples ${SAMPLE_INFO_CSV} --resume
+	nextflow run 1_trim_and_align.nf --samples ${SAMPLE_INFO_CSV} -resume
 else
 	nextflow run 1_trim_and_align.nf --samples ${SAMPLE_INFO_CSV}
 fi
