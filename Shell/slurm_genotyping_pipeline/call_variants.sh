@@ -15,13 +15,14 @@
 #SBATCH --time=24:00:00
 
 # User definitions
-PIPELINE_REPOSITORY=
+PIPELINE_REPOSITORY_DIR=
 BAM_PATHS_LIST=
-PLOIDY_FILE=
 
 GENOME_PDOM=/cluster/projects/nn10082k/ref/house_sparrow_genome_assembly-18-11-14_masked.fa
 GENOME_INDX=/cluster/projects/nn10082k/ref/house_sparrow_genome_assembly-18-11-14_masked.fa.fai
-WINDOW_SIZE=10000000 # Ten million
+SCAFFOLD_NAME="scaffold"
+PLOIDY_FILE=${PIPELINE_REPOSITORY_DIR}/default.ploidy
+WINDOW_SIZE=10000000
 
 # Prepare environment
 set -o errexit
@@ -36,11 +37,11 @@ conda activate /cluster/projects/nn10082k/conda_group/nextflow
 module list
 
 # Work start
-cd ${PIPELINE_REPOSITORY}
+cd ${PIPELINE_REPOSITORY_DIR}
 echo "Working in:" $PWD
 
 WINDOW_LIST=sparrow_genome_windows.list
-bash 0_create_genome_windows.sh ${GENOME_INDX} ${WINDOW_SIZE} ${WINDOW_LIST}
+bash 0_create_genome_windows.sh ${GENOME_INDX} ${WINDOW_SIZE} ${SCAFFOLD_NAME} ${WINDOW_LIST}
 nextflow run 2_call_variants.nf --bams ${BAM_PATHS_LIST} --windows ${WINDOW_LIST} --ref ${GENOME_PDOM} --ploidyFile ${PLOIDY_FILE}
 
 # Work end
