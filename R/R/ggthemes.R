@@ -1,5 +1,5 @@
-
-ggtheme <- ggplot2::theme(
+library("ggplot2")
+ggtheme <- theme(
   axis.text = element_text(size = 13),
   axis.title.x = element_text(size = 14, face = "bold", margin = margin(t = 14)),
   axis.title.y = element_text(size = 14, face = "bold", margin = margin(r = 14)),
